@@ -1,6 +1,6 @@
 // client/src/pages/Blog.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api'; // Ganti axios dengan api service
 import PostForm from '../components/PostForm';
 import PostCard from '../components/PostCard';
 
@@ -14,7 +14,7 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/posts');
+      const res = await api.get('/posts'); // Gunakan api service untuk konsistensi
       setPosts(res.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -25,7 +25,7 @@ const Blog = () => {
 
   const createPost = async (postData) => {
     try {
-      const res = await axios.post('http://localhost:8080/posts', {
+      const res = await api.post('/api/posts', { // Gunakan endpoint yang dilindungi
         title: postData.title,
         body: postData.body
       });
@@ -38,7 +38,7 @@ const Blog = () => {
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/posts/${id}`);
+      await api.delete(`/api/posts/${id}`); // Gunakan endpoint yang dilindungi
       setPosts(prevPosts => prevPosts.filter(post => post.id !== id));
     } catch (error) {
       console.error('Error deleting post:', error);

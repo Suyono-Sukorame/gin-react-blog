@@ -1,11 +1,10 @@
 package main
 
 import (
-	"log"
-	"os"
-
 	"blog-server/controllers"
 	"blog-server/database"
+	"log"
+	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -28,9 +27,14 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	// Post routes
 	router.GET("/posts", controllers.GetPosts)
 	router.POST("/posts", controllers.CreatePost)
 	router.DELETE("/posts/:id", controllers.DeletePost)
+
+	// **Auth routes harus ada di sini**
+	router.POST("/auth/register", controllers.Register)
+	router.POST("/auth/login", controllers.Login)
 
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "OK"})

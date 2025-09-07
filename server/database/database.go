@@ -16,6 +16,7 @@ import (
 // This prevents other packages from accessing it directly.
 var db *gorm.DB
 
+// Connect initializes the database connection and runs auto-migration
 func Connect() {
 	var err error
 
@@ -34,8 +35,8 @@ func Connect() {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
-	// Auto migrate
-	err = db.AutoMigrate(&models.Post{})
+	// Auto migrate Post and User models
+	err = db.AutoMigrate(&models.Post{}, &models.User{})
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
