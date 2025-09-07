@@ -3,6 +3,7 @@ package main
 import (
 	"blog-server/controllers"
 	"blog-server/database"
+	"blog-server/middlewares"
 	"log"
 	"os"
 
@@ -33,6 +34,10 @@ func main() {
 	router.DELETE("/posts/:id", controllers.DeletePost)
 
 	// **Auth routes harus ada di sini**
+
+	router.GET("/me", middlewares.AuthMiddleware(), controllers.GetProfile)
+	router.PUT("/me", middlewares.AuthMiddleware(), controllers.UpdateProfile)
+
 	router.POST("/auth/register", controllers.Register)
 	router.POST("/auth/login", controllers.Login)
 

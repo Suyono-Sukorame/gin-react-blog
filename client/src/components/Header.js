@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  FaHome,
-  FaEnvelope,
   FaUser,
   FaSignInAlt,
   FaUserPlus,
   FaSignOutAlt,
-  FaBlog,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -51,10 +48,16 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center relative">
           <Link to="/" className={navLinkClasses("/")}>
-            <FaHome className="mr-2" /> Home
+            Home
           </Link>
           <Link to="/blog" className={navLinkClasses("/blog")}>
-            <FaBlog className="mr-2" /> Blog
+            Blog
+          </Link>
+          <Link to="/about" className={navLinkClasses("/about")}>
+            About
+          </Link>
+          <Link to="/contact" className={navLinkClasses("/contact")}>
+            Contact
           </Link>
 
           {/* Auth Dropdown */}
@@ -73,7 +76,12 @@ const Header = () => {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
 
@@ -132,7 +140,12 @@ const Header = () => {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
             </svg>
           </button>
         </div>
@@ -147,14 +160,28 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className={mobileNavLinkClasses("/")}
             >
-              <FaHome className="mr-3" /> Home
+              Home
             </Link>
             <Link
               to="/blog"
               onClick={() => setIsMenuOpen(false)}
               className={mobileNavLinkClasses("/blog")}
             >
-              <FaBlog className="mr-3" /> Blog
+              Blog
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className={mobileNavLinkClasses("/about")}
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className={mobileNavLinkClasses("/contact")}
+            >
+              Contact
             </Link>
             <div className="w-full border-t my-2"></div>
             {token ? (
@@ -164,7 +191,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={mobileNavLinkClasses("/profile")}
                 >
-                  <FaUser className="mr-3" /> Profile
+                  Profile
                 </Link>
                 <button
                   onClick={handleLogout}
