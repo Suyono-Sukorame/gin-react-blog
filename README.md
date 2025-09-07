@@ -15,7 +15,7 @@
   </a>
 </p>
 
-Aplikasi blog full-stack yang dibangun dengan backend **Go (Gin)** dan frontend **React**, serta dihias dengan **Tailwind CSS**. Proyek ini menyediakan fungsionalitas CRUD (Create, Read, Update, Delete) lengkap untuk postingan blog.
+A full-stack blog application built with a **Go (Gin)** backend and a **React** frontend, styled with **Tailwind CSS**. This project provides complete CRUD (Create, Read, Update, Delete) functionality for blog posts.
 
 ---
 
@@ -42,108 +42,106 @@ gin-react-blog/
 
 ## 🏗️ Alur Arsitektur
 
-Aplikasi ini mengikuti arsitektur client-server klasik:
+This application follows a classic client-server architecture:
 
 ```text
 +------------------+           +-----------------+          +-----------------+
 |                  |  HTTP/S   |                 |   SQL    |                 |
 |  React Frontend  | <-------> |   Gin Backend   | <------> |  PostgreSQL DB  |
-| (localhost:3000) |  (JSON)   | (localhost:8080)| (GORM)   |                 |
+| (localhost:3000) |  (JSON)   | (localhost:8080)|  (GORM)  |                 |
 |                  |           |                 |          |                 |
 +------------------+           +-----------------+          +-----------------+
 ```
 
-1.  **Frontend (React)**: Pengguna berinteraksi dengan UI, yang mengirimkan request API ke backend.
-2.  **Backend (Gin)**: Server menerima request, memproses logika bisnis, dan melakukan operasi CRUD ke database melalui GORM.
-3.  **Database (PostgreSQL)**: Menyimpan dan mengambil data aplikasi secara persisten.
+1.  **Frontend (React)**: Users interact with the UI, which sends API requests to the backend.
+2.  **Backend (Gin)**: The server receives requests, processes business logic, and performs CRUD operations on the database via GORM.
+3.  **Database (PostgreSQL)**: Database (PostgreSQL): Stores and retrieves application data persistently.
 
 ---
 
 ## 🛠️ Prasyarat
 
-Sebelum memulai, pastikan Anda telah menginstal:
+Before getting started, make sure you have installed:
 
--   [Node.js](https://nodejs.org/en/) (v18.x atau lebih baru)
--   [Go](https://go.dev/doc/install) (v1.20 atau lebih baru)
--   [PostgreSQL](https://www.postgresql.org/download/) (atau database lain yang didukung)
+-   [Node.js](https://nodejs.org/en/) (v18.x or newer)
+-   [Go](https://go.dev/doc/install) (v1.20 or newer)
+-   [PostgreSQL](https://www.postgresql.org/download/) (or any supported database)
 -   [Git](https://git-scm.com/)
 
 ---
 
-## 🚀 Memulai
+## 🚀 Getting Started
 
-Ikuti instruksi berikut untuk menjalankan proyek di mesin lokal Anda.
+Follow these instructions to run the project on your local machine.
 
-### 1. Backend (Server Gin)
+### 1. Backend (Gin Server)
 
 ```bash
-# Masuk ke direktori server
+# Navigate to the server directory
 cd server
 
-# Buat file .env (dan perbarui dengan kredensial DB Anda)
+# Create a .env file (and update with your DB credentials)
 # cp .env.example .env
 
 # Instal dependensi
 go mod tidy
 
-# Jalankan server
+# Run the server
 go run main.go
 ```
-Server akan berjalan di `http://localhost:8080`.
+The server will run at `http://localhost:8080`.
 
 ---
 
 ### 2. Frontend (Client React)
 
 ```bash
-# Masuk ke direktori client
+# Navigate to the client directory
 cd client
 
 # Instal dependensi
 npm install
 
-# Jalankan client
+# Run the client
 npm start
 ```
-Client akan tersedia di `http://localhost:3000`.
+The client will be available at `http://localhost:3000`.
 
 ---
 
 ## 🌐 Endpoint API
 
-Backend menyediakan endpoint RESTful API berikut:
-
-| Method   | Endpoint      | Deskripsi                  |
-| :------- | :------------ | :------------------------- |
-| `GET`    | `/posts`      | Mendapatkan semua post     |
-| `GET`    | `/posts/:id`  | Mendapatkan satu post      |
-| `POST`   | `/posts`      | Membuat post baru          |
-| `PUT`    | `/posts/:id`  | Memperbarui post yang ada  |
-| `DELETE` | `/posts/:id`  | Menghapus sebuah post      |
+| Method   | Endpoint     | Description             |
+| :------- | :----------- | :---------------------- |
+| `GET`    | `/posts`     | Get all posts           |
+| `GET`    | `/posts/:id` | Get a single post       |
+| `POST`   | `/posts`     | Create a new post       |
+| `PUT`    | `/posts/:id` | Update an existing post |
+| `DELETE` | `/posts/:id` | Delete a post           |
 
 ---
 
 ## ✨ Fitur
 
--   **Fungsionalitas CRUD Penuh**: Buat, Baca, Perbarui, dan Hapus postingan blog.
--   **UI Modern**: Antarmuka yang responsif dan stylish dibangun dengan React dan Tailwind CSS.
--   **RESTful API**: API backend yang bersih dan terstruktur dibangun dengan Go dan Gin.
--   **Integrasi Database**: Menggunakan GORM untuk interaksi database yang mulus.
--   **Kode yang Bersih**: Pemisahan yang jelas antara frontend dan backend.
+-   **Full CRUD Functionality**: Create, Read, Update, and Delete blog posts.
+-   **Modern UI**: Responsive and stylish interface built with React and Tailwind CSS.
+-   **RESTful API**: Clean and structured backend API built with Go and Gin.
+-   **Database Integration**: Uses GORM for smooth database interactions.
+-   **Clean Code**: Clear separation between frontend and backend.
 
 ---
 
 ## ☁️ Deployment
 
-Aplikasi ini dapat di-deploy menggunakan berbagai platform:
+This application can be deployed using various platforms:
 
 -   **Frontend (React)**: Vercel, Netlify, AWS S3/CloudFront
 -   **Backend (Go)**: Render, Railway, Heroku, AWS EC2/ECS
--   **Database**: Layanan database terkelola seperti Neon, Supabase, atau AWS RDS.
--   **Full-Stack**: Gunakan Docker untuk men-deploy aplikasi di platform mana pun yang mendukung kontainer.
+-   **Database**: Managed database services such as Neon, Supabase, or AWS RDS
+-   **Full-Stack**: Use Docker to deploy the app on any container-supported platform
 
 ---
 
 ## 📜 Lisensi
 
-Proyek ini dilisensikan di bawah Lisensi MIT. Lihat file LICENSE untuk detailnya.
+This project is licensed under the MIT License. See the LICENSE file for details.

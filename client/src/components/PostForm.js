@@ -1,3 +1,4 @@
+// client/src/components/PostForm.js
 import React, { useState } from 'react';
 
 const PostForm = ({ onSubmit }) => {
